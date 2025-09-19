@@ -1,11 +1,17 @@
 import unittest
 import json
-from validate import validate
-
-
+from validate import validate, ValidationResult
+from typing import List, Optional
 
 class TestRepositoryMetadata(unittest.TestCase):
-
+    def assertValid(self, validationResult: ValidationResult):
+        print(validationResult)
+        return self.assertTrue(validationResult.is_valid, str(validationResult))
+    
+    def assertInvalid(self, validationResult: ValidationResult):
+        print(validationResult)
+        return self.assertFalse(validationResult.is_valid, str(validationResult))
+    
     def test_valid_federal_repo(self):
         data = {
             "name": "Example Repo",
@@ -19,7 +25,7 @@ class TestRepositoryMetadata(unittest.TestCase):
             "feedbackMechanism": "Submit issues via GitHub",
             "pointOfContact": "contact@example.gov"
         }
-        self.assertTrue(validate(data))
+        self.assertValid(validate(data))
 
     def test_missing_required_field(self):
         data = {
@@ -28,7 +34,7 @@ class TestRepositoryMetadata(unittest.TestCase):
             "url": "https://code.doi.gov/incomplete-repo"
             # Missing 'lastModified'
         }
-        self.assertFalse(validate(data))
+        self.assertInvalid(validate(data))
 
     def test_valid_public_repo_with_empty_awards(self):
         data = {
@@ -40,7 +46,7 @@ class TestRepositoryMetadata(unittest.TestCase):
             "contractAwardUrls": [],
             "pointOfContact": "public@example.gov"
         }
-        self.assertTrue(validate(data))
+        self.assertValid(validate(data))
 
 if __name__ == "__main__":
     unittest.main()

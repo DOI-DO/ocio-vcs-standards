@@ -6,11 +6,13 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "A short human readable title used to refer to the repository in passing"
+      "description": "A short human readable title used to refer to the repository in passing. Required if repository was created/modified after SHARE IT Act onset date.",
+      "nullable": true
     },
     "description": {
       "type": "string",
-      "description": "A moderate length human readable explanation used to help people who are unfamiliar with the repository to understand its purpose"
+      "description": "A moderate length human readable explanation used to help people who are unfamiliar with the repository to understand its purpose. Required if repository was created/modified after SHARE IT Act onset date",
+      "nullable": true
     },
     "lastModified": {
       "type": "string",
@@ -26,7 +28,8 @@
       "type": "string",
       "format": "uri",
       "description": "URL of the OCIO-approved exemption that prohibits sharing this repository.",
-      "pattern": "^https://doi\\.gov/developer/share-it-act-exemptions/.*"
+      "pattern": "^https://doi\\.gov/developer/share-it-act-exemptions/.*",
+      "nullable": true
     },
     "url": {
       "type": "string",
@@ -40,7 +43,8 @@
         "type": "string",
         "format": "uri",
         "pattern": "^https://www\\.usaspending\\.gov/award/.*"
-      }
+      },
+      "nullable": true
     },
     "feedbackMechanism": {
       "type": "string",
