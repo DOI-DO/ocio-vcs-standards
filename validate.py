@@ -3,7 +3,7 @@ from jsonschema import validate as jsvalidate, ValidationError
 
 def validate(repository_metadata):
     # Load the schema
-    with open("vcs-standard-schema.json", "r") as schema_file:
+    with open("vcs-standard.schema.json", "r") as schema_file:
         schema = json.load(schema_file)
 
     # Example repository metadata to validate

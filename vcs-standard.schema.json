@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://doi.gov/developer/vcs-standard-schema.json",
+  "$id": "https://doi.gov/developer/vcs-standard.schema.json",
   "title": "OCIO Repository Metadata",
   "type": "object",
   "properties": {
