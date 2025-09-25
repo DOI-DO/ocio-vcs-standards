@@ -42,6 +42,7 @@ def validate(repository_metadata):
     if 'Private' == repository_metadata.get('visibility'):
         if None == repository_metadata.get('exemptionUrl'):
             validation_result.add_error('"exemptionUrl" is required when "visibility" is "Private"')
+
     return validation_result
 
 class ValidationResult:

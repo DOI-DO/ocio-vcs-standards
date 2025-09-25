@@ -74,5 +74,19 @@ class TestRepositoryMetadata(unittest.TestCase):
         }
         self.assertValid(validate(data))
 
+    def test_invalid_exemption_url_on_private_repo(self):
+        data = {
+            "name": "Example Repo",
+            "description": "Repository for DOI example code.",
+            "lastModified": "2025-09-01",
+            "visibility": "Private",
+            "url": "https://code.doi.gov/example-repo",
+            "contractAwardUrls": [
+                "https://www.usaspending.gov/award/EXAMPLE123"
+            ],
+            "exemptionUrl": "https://doi.gov/this-is-not-a-share-it-act-exemption-url"
+        }
+        self.assertInvalid(validate(data))
+        
 if __name__ == "__main__":
     unittest.main()
