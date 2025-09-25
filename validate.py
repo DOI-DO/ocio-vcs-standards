@@ -26,7 +26,9 @@ def validate(repository_metadata):
         validation_result.is_valid = False     
         return validation_result
     
-   # Step 2: Custom logic: if lastModified > threshold, description is required
+   # Step 2: Custom logic
+
+   # If lastModified > threshold, description is required
     last_modified = datetime.strptime(repository_metadata["lastModified"], "%Y-%m-%d")
     
     if last_modified > threshold:
@@ -34,7 +36,12 @@ def validate(repository_metadata):
             if None == repository_metadata.get(property):
                 validation_result.add_error(f"{property} is required for repositories modified after {threshold_date}.")
                 validation_result.is_valid = False
+    
+    # If visibility="Private", is an exemption URL defined?
 
+    if 'Private' == repository_metadata.get('visibility'):
+        if None == repository_metadata.get('exemptionUrl'):
+            validation_result.add_error('"exemptionUrl" is required when "visibility" is "Private"')
     return validation_result
 
 class ValidationResult:
