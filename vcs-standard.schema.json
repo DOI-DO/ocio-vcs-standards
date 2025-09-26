@@ -6,39 +6,39 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "A short human readable title used to refer to the repository in passing. Required if repository was created/modified after SHARE IT Act onset date.",
+      "description": "A short human readable title used to refer to the repository in passing. Required if repository was created/modified after SHARE IT Act onset date. SHARE IT Act Clauses: Loosely, SEC 2 (5) (A)",
       "nullable": true
     },
     "description": {
       "type": "string",
-      "description": "A moderate length human readable explanation used to help people who are unfamiliar with the repository to understand its purpose. Required if repository was created/modified after SHARE IT Act onset date",
+      "description": "A moderate length human readable explanation used to help people who are unfamiliar with the repository to understand its purpose. Required if repository was created/modified after SHARE IT Act onset date. SHARE IT Act Clauses: Loosely, SEC 2 (5) (A)",
       "nullable": true
     },
     "lastModified": {
       "type": "string",
       "format": "date",
-      "description": "Date the repository was last modified (ISO-8601 format)"
+      "description": "Date the repository was last modified (ISO-8601 format). SHARE IT Act Clauses: SEC 3 (d)(2)(A)(b)(ii), SEC 7"
     },
     "visibility": {
       "type": "string",
       "enum": ["Public", "Private", "Federal"],
-      "description": "Whether access to the source code is open to the public, to any federal employee, or restricted to a private group of authorized users based on an approved exemption from OCIO."
+      "description": "Whether access to the source code is open to the public, to any federal employee, or restricted to a private group of authorized users based on an approved exemption from OCIO. SHARE IT Act Clauses: SEC 2 (5) (B) (i) (II)"
     },
     "exemptionUrl": {
       "type": "string",
       "format": "uri",
-      "description": "URL of the OCIO-approved exemption that prohibits sharing this repository.",
+      "description": "URL of the OCIO-approved exemption that prohibits sharing this repository. SHARE IT Act Clauses: SEC 2 (5) (B) (i) (II)",
       "pattern": "^https://doi\\.gov/developer/share-it-act-exemptions/.*",
       "nullable": true
     },
     "url": {
       "type": "string",
       "format": "uri",
-      "description": "Hyperlink to the repository in which the code is shared, whether public or private"
+      "description": "Hyperlink to the repository in which the code is shared, whether public or private. SHARE IT Act Clauses: SEC 2 (5) (B) (iii)"
     },
     "contractAwardUrls": {
       "type": ["array", "null"],
-      "description": "List of USASpending.gov award URLs or null if unknown. Providing an empty list [] means that it has been positively affirmed that the custom-developed code and other key technical components in the repository were NOT produced pursuant to a contract.",
+      "description": "List of USASpending.gov award URLs or null if unknown. Providing an empty list [] means that it has been positively affirmed that the custom-developed code and other key technical components in the repository were NOT produced pursuant to a contract. SHARE IT Act Clauses: SEC 2 (5) (B) (ii), SEC 2 (5) (B) (i) (II), SEC 7",
       "items": {
         "type": "string",
         "format": "uri",
@@ -48,13 +48,13 @@
     },
     "feedbackMechanism": {
       "type": "string",
-      "description": "Description of how to contribute or provide feedback",
+      "description": "Description of how to contribute or provide feedback. SHARE IT Act Clauses: SEC 3 (d)(2)(A)(b)(iii)",
       "nullable": true
     },
     "pointOfContact": {
       "type": "string",
       "format": "email",
-      "description": "Email address for repository inquiries",
+      "description": "Email address for repository inquiries. SHARE IT Act Clauses: None",
       "nullable": true
     }
   },
