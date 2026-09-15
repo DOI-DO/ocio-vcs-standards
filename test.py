@@ -17,11 +17,17 @@ class TestRepositoryMetadata(unittest.TestCase):
             "lastModified": "2025-09-01",
             "visibility": "Federal",
             "url": "https://code.doi.gov/example-repo",
-            "contractAwardUrls": [
-                "https://www.usaspending.gov/award/EXAMPLE123"
-            ],
             "feedbackMechanism": "Submit issues via GitHub",
-            "pointOfContact": "contact@example.gov"
+            "technicalPointOfContact": "contact@example.gov",
+            "repositoryOwner": "repo owner",
+            "systems": ["system1", "system2"],
+            "dataClassification": "Public",
+            "status": "Active",
+            "primaryTechnologies": ["python", ".NET"],
+            "isDeployedToProduction": False,
+            "isSbomAvailable": True,
+            "hasCicdPipeline": False,
+            "containsPiiOrSensitiveData": True
         }
         self.assertValid(validate(data))
 
@@ -41,8 +47,16 @@ class TestRepositoryMetadata(unittest.TestCase):
             "lastModified": "2025-08-15",
             "visibility": "Public",
             "url": "https://code.doi.gov/public-repo",
-            "contractAwardUrls": [],
-            "pointOfContact": "public@example.gov"
+            "technicalPointOfContact": "contact@example.gov",
+            "repositoryOwner": "repo owner",
+            "systems": ["system1", "system2"],
+            "dataClassification": "Public",
+            "status": "Active",
+            "primaryTechnologies": ["python", ".NET"],
+            "isDeployedToProduction": False,
+            "isSbomAvailable": True,
+            "hasCicdPipeline": False,
+            "containsPiiOrSensitiveData": True
         }
         self.assertValid(validate(data))
 
@@ -53,24 +67,27 @@ class TestRepositoryMetadata(unittest.TestCase):
             "lastModified": "2025-09-01",
             "visibility": "Private",
             "url": "https://code.doi.gov/example-repo",
-            "contractAwardUrls": [
-                "https://www.usaspending.gov/award/EXAMPLE123"
-            ],
             "feedbackMechanism": "Submit issues via GitHub",
         }
         self.assertInvalid(validate(data))
 
-    def test_valid_populated_exemption_url_on_private_repo(self):
+    def test_valid_populated_url_on_private_repo(self):
         data = {
             "name": "Example Repo",
             "description": "Repository for DOI example code.",
             "lastModified": "2025-09-01",
             "visibility": "Private",
             "url": "https://code.doi.gov/example-repo",
-            "contractAwardUrls": [
-                "https://www.usaspending.gov/award/EXAMPLE123"
-            ],
-            "exemptionUrl": "https://doi.gov/developer/share-it-act-exemptions/example-exemption"
+            "technicalPointOfContact": "contact@example.gov",
+            "repositoryOwner": "repo owner",
+            "systems": ["system1", "system2", "system3"],
+            "dataClassification": "Internal",
+            "status": "Archived",
+            "primaryTechnologies": ["Node", "React"],
+            "isDeployedToProduction": True,
+            "isSbomAvailable": True,
+            "hasCicdPipeline": True,
+            "containsPiiOrSensitiveData": True
         }
         self.assertValid(validate(data))
 
@@ -81,9 +98,6 @@ class TestRepositoryMetadata(unittest.TestCase):
             "lastModified": "2025-09-01",
             "visibility": "Private",
             "url": "https://code.doi.gov/example-repo",
-            "contractAwardUrls": [
-                "https://www.usaspending.gov/award/EXAMPLE123"
-            ],
             "exemptionUrl": "https://doi.gov/this-is-not-a-share-it-act-exemption-url"
         }
         self.assertInvalid(validate(data))

@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import List, Optional
 
 # Load the schema
-with open("vcs-standard.schema.json", "r") as schema_file:
+with open("vcs-standard.schema.json", "r", encoding="utf-8") as schema_file:
     schema = json.load(schema_file)
 
 threshold_date = "2025-01-01"
@@ -13,7 +13,6 @@ threshold = datetime.strptime(threshold_date, "%Y-%m-%d")
 properties_required_after_threshold = [
     'name',
     'description',
-    'contractAwardUrls',
 ]
 
 def validate(repository_metadata):
@@ -40,8 +39,8 @@ def validate(repository_metadata):
     # If visibility="Private", is an exemption URL defined?
 
     if 'Private' == repository_metadata.get('visibility'):
-        if None == repository_metadata.get('exemptionUrl'):
-            validation_result.add_error('"exemptionUrl" is required when "visibility" is "Private"')
+        if None == repository_metadata.get('url'):
+            validation_result.add_error('"url" is required when "visibility" is "Private"')
 
     return validation_result
 
