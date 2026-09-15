@@ -31,68 +31,68 @@
     },
     "feedbackMechanism": {
       "type": "string",
-      "description": "If it exists, describe a feedback mechanism for improvements to the code or community development of the code. For example, this could be the URL of an issue tracker."
+      "description": "If it exists, describe a feedback mechanism for improvements to the code or community development of the code. For example, this could be the URL of an issue tracker.SHARE IT Act Clauses: SEC 3 (d)(2)(A)(iii)"
     },
     "technicalPointOfContact": {
       "type": "string",
       "format": "email",
-      "description": "One email address whose recipient(s) can answer technical questions about the repository, facilitate access requests, and respond to requests to address cybersecurity vulnerabilities. SHARE IT Act Clauses: None"
+      "description": "One email address whose recipient(s) can answer technical questions about the repository, facilitate access requests, and respond to requests to address cybersecurity vulnerabilities. FITARA § 11319(b)(1)(A)(ii), FISMA § 3554(a)(2)"
     },
     "repositoryOwner": {
       "type": "string",
-      "description": "The accountable bureau, office or program owning the repository. SHARE IT Act Clauses: None"
+      "description": "The accountable bureau, office or program owning the repository. FISMA § 3554(a)(2)"
     },
     "systems": {
       "type": "array",
-      "description": "A list of DOI XACTA IDs where this code is deployed. SHARE IT Act Clauses: None"
+      "description": "A list of DOI XACTA IDs where this code is deployed.  FISMA § 3554(a)(2)"
     },
     "dataClassification": {
       "type": "string",
-      "description": "Classification according to Department Classification guidance. SHARE IT Act Clauses: None",
+      "description": "Classification according to Department Classification guidance. FISMA § 3554(a)(2) ",
       "enum": ["Public", "Internal", "CUI", "Sensitive"]
     },    
     "status": {
       "type": "string",
-      "description": "The activity status of the repository. A repository is active if it has been committed to in the last 365 days. A repository is inactive if it has not been committed to in the last 180 days. A repository is archived if it has not been committed to in the last 365 days, if its access has been switched to read-only, and if it displays a user-facing message conveying the idea that the repository is no longer maintained. SHARE IT Act Clauses: None",
+      "description": "The activity status of the repository. A repository is active if it has been committed to in the last 365 days. A repository is inactive if it has not been committed to in the last 180 days. A repository is archived if it has not been committed to in the last 365 days, if its access has been switched to read-only, and if it displays a user-facing message conveying the idea that the repository is no longer maintained. FITARA § 11319(b)(1)(A)(ii)",
       "enum": ["Active", "Inactive", "Archived"]
     },    
     "primaryTechnologies": {
       "type": "array",
-      "description": "The primary tools, languages, or frameworks leveraged by the repository. SHARE IT Act Clauses: None"
+      "description": "The primary tools, languages, or frameworks leveraged by the repository. FITARA § 11319(b)(1)(A)(ii) "
     },    
     "isDeployedToProduction": {
       "type": "boolean",
-      "description": "True if the code runs in a production environment, otherwise, false. A researcher’s laptop or desktop is not. SHARE IT Act Clauses: None"
+      "description": "True if the code runs in a production environment, otherwise, false. A researcher’s laptop or desktop is not. FITARA § 11319(b)(1)(A)(ii)"
     },    
-    "isSBOMAvailable": {
+    "isSbomAvailable": {
       "type": "boolean",
-      "description": "True if a Software Bill of Materials exists for the software built from this repository. False otherwise. SHARE IT Act Clauses: None"
+      "description": "True if a Software Bill of Materials exists for the software built from this repository. False otherwise. NIST SSDF PS. 3.2"
     },    
     "sbomFormat": {
       "type": "string",
-      "description": "Format of the SBOM. e.g. SPDX, CycloneDX. SHARE IT Act Clauses: None",
+      "description": "Format of the SBOM. e.g. SPDX, CycloneDX. NIST SSDF PS. 3.2",
       "nullable": true
     },    
-    "sbomURL": {
+    "sbomUrl": {
       "type": "string",
       "format": "uri",
-      "description": "URL for the SBOM. SHARE IT Act Clauses: None",
+      "description": "URL for the SBOM. NIST SSDF PS. 3.2",
       "nullable": true
     },    
-    "hasCICDPipeline": {
+    "hasCicdPipeline": {
       "type": "boolean",
-      "description": "True if an automated build and/or deployment pipeline is connected to this repository. False otherwise. SHARE IT Act Clauses: None"
+      "description": "True if an automated build and/or deployment pipeline is connected to this repository. False otherwise. NIST SSDF PO. 3"
     },    
-    "containsPIIOrSensitiveData": {
+    "containsPiiOrSensitiveData": {
       "type": "boolean",
-      "description": "“True” if repository holds sensitive data. “False”, otherwise. SHARE IT Act Clauses: None"
+      "description": "“True” if repository holds sensitive data. “False”, otherwise. FISMA § 3554(a)(2)"
     },    
     "notes": {
       "type": "string",
-      "description": "Any clarifying information (e.g., planned decommission, migration in progress, monorepo containing multiple applications). SHARE IT Act Clauses: None",
+      "description": "Any clarifying information (e.g., planned decommission, migration in progress, monorepo containing multiple applications). FITARA § 11319(b)(1)(A)(ii)",
       "nullable": true
     }
   },
-  "required": ["lastModified", "visibility", "url","repositoryOwner", "technicalPointOfContact", "systems", "dataClassification", "status", "primaryTechnologies", "isDeployedToProduction", "isSBOMAvailable", "hasCICDPipeline", "containsPIIOrSensitiveData"],
+  "required": ["lastModified", "visibility", "url","repositoryOwner", "technicalPointOfContact", "systems", "dataClassification", "status", "primaryTechnologies", "isDeployedToProduction", "isSbomAvailable", "hasCicdPipeline", "containsPiiOrSensitiveData"],
   "additionalProperties": false
 }
