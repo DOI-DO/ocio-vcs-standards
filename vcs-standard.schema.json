@@ -6,58 +6,93 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "A short human readable title used to refer to the repository in passing. Required if repository was created/modified after SHARE IT Act onset date. SHARE IT Act Clauses: Loosely, SEC 2 (5) (A)",
+      "description": "A short human readable title used to refer to the repository in passing. This is the name of the repository as it appears on the hosting platform. SHARE IT Act Clauses: Loosely, SEC 2 (5) (A)",
       "nullable": true
     },
     "description": {
       "type": "string",
-      "description": "A moderate length human readable explanation used to help people who are unfamiliar with the repository to understand its purpose. Required if repository was created/modified after SHARE IT Act onset date. SHARE IT Act Clauses: Loosely, SEC 2 (5) (A)",
+      "description": "A moderate length human readable explanation used to help people who are unfamiliar with the repository to understand its purpose. SHARE IT Act Clauses: Loosely, SEC 2 (5) (A)",
       "nullable": true
     },
     "lastModified": {
       "type": "string",
       "format": "date",
-      "description": "Date the repository was last modified (ISO-8601 format). SHARE IT Act Clauses: SEC 3 (d)(2)(A)(b)(ii), SEC 7"
+      "description": "The date at which the repository was last modified (ISO-8601 format). SHARE IT Act Clauses: SEC 3 (d)(2)(A)(b)(ii), SEC 7"
     },
     "visibility": {
       "type": "string",
       "enum": ["Public", "Private", "Federal"],
       "description": "Whether access to the source code is open to the public, to any federal employee, or restricted to a private group of authorized users based on an approved exemption from OCIO. SHARE IT Act Clauses: SEC 2 (5) (B) (i) (II)"
     },
-    "exemptionUrl": {
-      "type": "string",
-      "format": "uri",
-      "description": "URL of the OCIO-approved exemption that prohibits sharing this repository. SHARE IT Act Clauses: SEC 2 (5) (B) (i) (II)",
-      "pattern": "^https://doi\\.gov/developer/share-it-act-exemptions/.*",
-      "nullable": true
-    },
     "url": {
       "type": "string",
       "format": "uri",
-      "description": "Hyperlink to the repository in which the code is shared, whether public or private. SHARE IT Act Clauses: SEC 2 (5) (B) (iii)"
-    },
-    "contractAwardUrls": {
-      "type": ["array", "null"],
-      "description": "List of USASpending.gov award URLs or null if unknown. Providing an empty list [] means that it has been positively affirmed that the custom-developed code and other key technical components in the repository were NOT produced pursuant to a contract. SHARE IT Act Clauses: SEC 2 (5) (B) (ii), SEC 2 (5) (B) (i) (II), SEC 7",
-      "items": {
-        "type": "string",
-        "format": "uri",
-        "pattern": "^https://www\\.usaspending\\.gov/award/.*"
-      },
-      "nullable": true
+      "description": "Hyperlink to the repository in which the code is shared, whether public or private. Do NOT embed tokens or other credentials in the URL. SHARE IT Act Clauses: SEC 2 (5) (B) (iii)"
     },
     "feedbackMechanism": {
       "type": "string",
-      "description": "Description of how to contribute or provide feedback. SHARE IT Act Clauses: SEC 3 (d)(2)(A)(b)(iii)",
-      "nullable": true
+      "description": "If it exists, describe a feedback mechanism for improvements to the code or community development of the code. For example, this could be the URL of an issue tracker."
     },
-    "pointOfContact": {
+    "technicalPointOfContact": {
       "type": "string",
       "format": "email",
-      "description": "Email address for repository inquiries. SHARE IT Act Clauses: None",
+      "description": "One email address whose recipient(s) can answer technical questions about the repository, facilitate access requests, and respond to requests to address cybersecurity vulnerabilities. SHARE IT Act Clauses: None"
+    },
+    "repositoryOwner": {
+      "type": "string",
+      "description": "The accountable bureau, office or program owning the repository. SHARE IT Act Clauses: None"
+    },
+    "systems": {
+      "type": "array",
+      "description": "A list of DOI XACTA IDs where this code is deployed. SHARE IT Act Clauses: None"
+    },
+    "dataClassification": {
+      "type": "string",
+      "description": "Classification according to Department Classification guidance. SHARE IT Act Clauses: None",
+      "enum": ["Public", "Internal", "CUI", "Sensitive"]
+    },    
+    "status": {
+      "type": "string",
+      "description": "The activity status of the repository. A repository is active if it has been committed to in the last 365 days. A repository is inactive if it has not been committed to in the last 180 days. A repository is archived if it has not been committed to in the last 365 days, if its access has been switched to read-only, and if it displays a user-facing message conveying the idea that the repository is no longer maintained. SHARE IT Act Clauses: None",
+      "enum": ["Active", "Inactive", "Archived"]
+    },    
+    "primaryTechnologies": {
+      "type": "array",
+      "description": "The primary tools, languages, or frameworks leveraged by the repository. SHARE IT Act Clauses: None"
+    },    
+    "isDeployedToProduction": {
+      "type": "boolean",
+      "description": "True if the code runs in a production environment, otherwise, false. A researcher’s laptop or desktop is not. SHARE IT Act Clauses: None"
+    },    
+    "isSBOMAvailable": {
+      "type": "boolean",
+      "description": "True if a Software Bill of Materials exists for the software built from this repository. False otherwise. SHARE IT Act Clauses: None"
+    },    
+    "sbomFormat": {
+      "type": "string",
+      "description": "Format of the SBOM. e.g. SPDX, CycloneDX. SHARE IT Act Clauses: None",
+      "nullable": true
+    },    
+    "sbomURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the SBOM. SHARE IT Act Clauses: None",
+      "nullable": true
+    },    
+    "hasCICDPipeline": {
+      "type": "boolean",
+      "description": "True if an automated build and/or deployment pipeline is connected to this repository. False otherwise. SHARE IT Act Clauses: None"
+    },    
+    "containsPIIOrSensitiveData": {
+      "type": "boolean",
+      "description": "“True” if repository holds sensitive data. “False”, otherwise. SHARE IT Act Clauses: None"
+    },    
+    "notes": {
+      "type": "string",
+      "description": "Any clarifying information (e.g., planned decommission, migration in progress, monorepo containing multiple applications). SHARE IT Act Clauses: None",
       "nullable": true
     }
   },
-  "required": ["lastModified", "visibility", "url"],
+  "required": ["lastModified", "visibility", "url","repositoryOwner", "technicalPointOfContact", "systems", "dataClassification", "status", "primaryTechnologies", "isDeployedToProduction", "isSBOMAvailable", "hasCICDPipeline", "containsPIIOrSensitiveData"],
   "additionalProperties": false
 }
